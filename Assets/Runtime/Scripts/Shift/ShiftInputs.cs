@@ -4,11 +4,13 @@ public class ShiftInputs : MonoBehaviour
 {
     [SerializeField] BoardManager _board;
 
+    public bool EnableInputs { get; set;}
+
     public bool BlockWasClicked(out Block clickedBlock)
     {
         clickedBlock = null;
         
-        if (Input.GetMouseButtonDown(0))
+        if (EnableInputs && Input.GetMouseButtonDown(0))
         {
             foreach(var block in _board.GetBlocks())
             {

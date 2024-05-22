@@ -12,7 +12,7 @@ public class ShiftManager : MonoBehaviour
 
     private bool _isShifting;
 
-    Vector2[] ShiftDirections = { Vector2.down, Vector2.up, Vector2.left, Vector2.right };
+    public Vector2[] ShiftDirections = { Vector2.down, Vector2.up, Vector2.left, Vector2.right };
 
     void Update()
     {
@@ -28,14 +28,17 @@ public class ShiftManager : MonoBehaviour
 
     /// <param name="block">Candidate block to move</param>
     /// <param name="direction">Possible direction to move the block</param>
-    bool CanMoveBlock(in Block block, out Vector2 direction)
+    public bool CanMoveBlock(in Block block, out Vector2 direction)
     {
         var position = block.Position;
         direction = Vector2.zero;
 
+        if(block == null)
+            return false;
+
         foreach(var shiftDirection in ShiftDirections)
         {
-            if(!_board.IsOutsideBoard(position + shiftDirection) && !_board.HasBlockAtSpace(position+shiftDirection))
+            if(!_board.IsOutsideBoard(position + shiftDirection) && !_board.HasBlockAtPosition(position+shiftDirection))
             {
                 direction = shiftDirection;
                 return true;
@@ -45,7 +48,7 @@ public class ShiftManager : MonoBehaviour
         return false;
     }
 
-    private void Shift(Block block, Vector2 dir)
+    public void Shift(Block block, Vector2 dir)
     {
         _isShifting = true;
         block.LeaveCurrentSpace();

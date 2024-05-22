@@ -4,23 +4,44 @@ using System.Collections;
 
 public class GameMode : MonoBehaviour
 {
+    [Header("Core")]
     [SerializeField] Camera _mainCamera;
     [SerializeField] BoardManager _boardManager;
+    [SerializeField] BoardShuffler _boardShuffler;
+    [SerializeField] SeedController _seedController;
+    [SerializeField] GameEndValidator _gameOverValidator;
+
+    [Header("Shift")]
+    [SerializeField] ShiftManager _shiftManager;
+    [SerializeField] ShiftInputs _shiftInputs;
+
+    [Header("HUD")]
     [SerializeField] GameObject _gameOverHud;
     [SerializeField] GameObject _gameWonHud;
-    [SerializeField] ShiftManager _shiftManager;
-    [SerializeField] GameEndValidator _gameOverValidator;
-    [SerializeField] SeedController _seedController;
+
+    const int InitialSeed = 777;
+    const int ShuffleAmount = 777;
 
     private bool _gameIsEnded;
 
     private void Start() 
     {
-        _shiftManager.EnableShifts = true;
+        // HUD
+        CenterCamera();
         _gameOverHud.SetActive(false);
         _gameWonHud.SetActive(false);
+
+        // Shift Controllers
+        _shiftManager.EnableShifts = true;
+        _shiftInputs.EnableInputs = false;
+
+        // Board Generation
+        _seedController.Seed = InitialSeed;
         _boardManager.GenerateBoard(_seedController.Seed);
-        CenterCamera();
+        _boardShuffler.ShuffleBoard(ShuffleAmount);
+
+        // Allow Gameplay
+        _shiftInputs.EnableInputs = true;
     }
 
     private void CenterCamera()

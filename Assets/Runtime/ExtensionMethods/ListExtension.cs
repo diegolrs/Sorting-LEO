@@ -4,9 +4,8 @@ using UnityEngine;
 
 public static class ListExtension
 {
-    public static void Shuffle<T>(this IList<T> list, int seed)
+    public static void Shuffle<T>(this IList<T> list)
     {
-        Random.InitState(seed);
         int n = list.Count;
 
         while (n > 1)
@@ -17,5 +16,15 @@ public static class ListExtension
             list[k] = list[n];
             list[n] = value;
         }
+    }
+
+    public static Queue<T> ToQueue<T>(this IList<T> list)
+    {
+        var queue = new Queue<T>();
+        for(int i = 0; i < list.Count; i++)
+        {
+            queue.Enqueue(list[i]);
+        }
+        return queue;
     }
 }

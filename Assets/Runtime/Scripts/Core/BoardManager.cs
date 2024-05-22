@@ -44,7 +44,7 @@ public class BoardManager : MonoBehaviour
     {
         GenerateBoardRenderer();
         GenerateGrid();
-        GenerateBlocks(_amountOnStart, seed);
+        GenerateBlocks(_amountOnStart);
     }
     
     private void GenerateBoardRenderer()
@@ -72,16 +72,18 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public void GenerateBlocks(int amount, int seed)
+    public void GenerateBlocks(int amount)
     {
         if(_blocks == null)
             _blocks = new List<Block>();
 
-        var freeSpaces = _blockSpaces
-                            .Where(v => !v.IsHoldingBlock())
-                            .OrderBy(r => Random.value);
+        // free spaces in (x,y) order
+        var freeSpaces = _blockSpaces.Where(v => !v.IsHoldingBlock())
+                                     .OrderByDescending(k => k.Position.x)
+                                     .OrderBy(k => k.Position.y)
+                                     .Reverse();
 
-        var possibleBlocks = GetRandomBlocks(seed);
+        var possibleBlocks = GetBlocksQueue();
 
         foreach(var freeSpace in freeSpaces.Take(amount))
         {
@@ -109,30 +111,46 @@ public class BoardManager : MonoBehaviour
                || position.y >= GetHeight();
     }
 
-    public bool HasBlockAtSpace(Vector2 position)
+    public bool HasBlockAtPosition(Vector2 position)
     {
         var space = GetBlockSpaceAt(position);
         return space != null && space.IsHoldingBlock();
     }
 
-    public bool HasBlockAtSpace(Vector2 position, out Block blockAtSpace)
+    public Block GetBlockAtPosition(Vector2 position)
     {
-        blockAtSpace = null;
-
-        if(GetBlockSpaceAt(position) is BlockSpace bs)
-            blockAtSpace = bs.GetBlock();
-
-        return blockAtSpace != null;
+        return GetBlockSpaceAt(position).GetBlock();
     }
 
+    ///<summary>returns: first occurence of empty block</summary>
+    public BlockSpace GetEmptyBlockSpace()
+    {
+        foreach(var blockSpace in _blockSpaces)
+        {
+            if(!blockSpace.IsHoldingBlock())
+                return blockSpace;
+        }
+        return null;
+    }
+
+    // public bool HasBlockAtSpace(Vector2 position, out Block blockAtSpace)
+    // {
+    //     blockAtSpace = null;
+
+    //     if(GetBlockSpaceAt(position) is BlockSpace bs)
+    //         blockAtSpace = bs.GetBlock();
+
+    //     return blockAtSpace != null;
+    // }
+
     ///<summary>Get Blocks from 1 to 15 randomly</summary>
-    private Queue<BlockType> GetRandomBlocks(int seed)
+    private Queue<BlockType> GetBlocksQueue()
     {
         var possibleBlocks = BlockType.PossibleValues
                              .GetValues(typeof(BlockType.PossibleValues))
                              .Cast<BlockType.PossibleValues>()
                              .ToList();
-        possibleBlocks.Shuffle(seed);
+
         possibleBlocks.Remove(BlockType.PossibleValues.Size); // remove sizeofenum field
 
         var queue = new Queue<BlockType>();

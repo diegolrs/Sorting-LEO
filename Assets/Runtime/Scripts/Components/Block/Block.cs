@@ -54,8 +54,6 @@ public class Block : MonoBehaviour
         }
     }
 
-    public bool CanMergeBlock(Block otherBlock) => otherBlock.CompareValue(_type.Value);
-
     public bool IsMouseOver()
     {
         Vector2 mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
