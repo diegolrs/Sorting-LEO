@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67241a989187b304eba614915c30d1dc, type: 3}
+  m_Name: BlockTypeSO
+  m_EditorClassIdentifier: 
+  _types:
+  - Value: 0
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 1
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 2
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 3
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 4
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 5
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 6
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 7
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 8
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 9
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 10
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 11
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 12
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 13
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  - Value: 14
+    BGColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
+    TextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  _defaultTextColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  _defaultBgColor: {r: 0.85098046, g: 0.8431373, b: 0.6313726, a: 1}
