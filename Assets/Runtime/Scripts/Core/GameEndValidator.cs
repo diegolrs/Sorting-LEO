@@ -6,40 +6,21 @@ public class GameEndValidator : MonoBehaviour
 
     public bool PlayerWonGame()
     {
-        // foreach(Block block in _board.GetBlocks())
-        // {
-        //     if(block.CompareValue(BlockType.PossibleValues._2048))
-        //         return true;
-        // }
+        var blockSpaces = _board.GetBlockSpaces();;
 
-        return false;
-    }
+        // last square must be empty
+        if(blockSpaces[blockSpaces.Count-1].IsHoldingBlock())
+            return false;
 
-    public bool PlayerLosedGame()
-    {
-        // foreach(Block block in _board.GetBlocks())
-        // {
-        //     if(CanMakeAMovement(block))
+        var orderedQueue = _board.GetOrderedBlocksQueue();
+        for(int ix = 0; ix < blockSpaces.Count-2; ix++)
+        {
+            if(!blockSpaces[ix].IsHoldingBlock())
                 return false;
-        // }
 
-        // return true;
-    }
-
-    // Valid moves: 
-    // 1 - Target is a empty block space
-    // 2 - Block in target block space can be merged
-    private bool IsAValideMove(Block block, Vector2 dir)
-    {
-        return !(_board.IsOutsideBoard(block.Position + dir) ||
-                 _board.GetBlockSpaceAt(block.Position + dir).IsHoldingBlock());
-    }
-
-    private bool CanMakeAMovement(Block block)
-    {
-        return (  IsAValideMove(block, Vector2.up)
-               || IsAValideMove(block, Vector2.down)
-               || IsAValideMove(block, Vector2.left)
-               || IsAValideMove(block, Vector2.right));
+            if(blockSpaces[ix].GetBlock().GetBlockType().Value != orderedQueue.Dequeue().Value)
+                return false;
+        }
+        return true;
     }
 }

@@ -14,7 +14,7 @@ public class Block : MonoBehaviour
     private void OnDestroy() => LeaveCurrentSpace();
 
     public Vector2 Position => transform.localPosition;
-    public bool CompareValue(BlockType.PossibleValues value) => _type.Value == value;
+    public BlockType GetBlockType() => _type;
 
     private BlockSpace _blockSpace;
 

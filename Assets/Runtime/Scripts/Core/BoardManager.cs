@@ -9,17 +9,18 @@ public class BoardManager : MonoBehaviour
     [Header("Board Parameters")]
     [SerializeField] int _width;
     [SerializeField] int _height;
-    [SerializeField] int _amountOnStart;
     public int GetWidth() => _width;
     public int GetHeight() => _height;
     public Vector2 BoardCenter => new Vector2((_width -1)/2f, (_height-1)/2f);
     private Vector2 BoardSize => new Vector2(_width, _height);
+    const int QuantityOfBlocks = ((int)BlockType.PossibleValues.Size);
 
 
     #region Block Data
     List<BlockSpace> _blockSpaces;
     List<Block> _blocks;
     public List<Block> GetBlocks() => _blocks;
+    public List<BlockSpace> GetBlockSpaces() => _blockSpaces;
     #endregion
 
 
@@ -44,7 +45,7 @@ public class BoardManager : MonoBehaviour
     {
         GenerateBoardRenderer();
         GenerateGrid();
-        GenerateBlocks(_amountOnStart);
+        GenerateBlocks();
     }
     
     private void GenerateBoardRenderer()
@@ -70,22 +71,24 @@ public class BoardManager : MonoBehaviour
                 _blockSpaces.Add(space);
             }
         }
+
+        _blockSpaces = _blockSpaces
+                        .OrderByDescending(k => k.Position.x)
+                        .OrderBy(k => k.Position.y)
+                        .Reverse()
+                        .ToList();
     }
 
-    public void GenerateBlocks(int amount)
+    public void GenerateBlocks()
     {
         if(_blocks == null)
             _blocks = new List<Block>();
 
         // free spaces in (x,y) order
-        var freeSpaces = _blockSpaces.Where(v => !v.IsHoldingBlock())
-                                     .OrderByDescending(k => k.Position.x)
-                                     .OrderBy(k => k.Position.y)
-                                     .Reverse();
+        var freeSpaces = _blockSpaces.Where(v => !v.IsHoldingBlock());
+        var possibleBlocks = GetOrderedBlocksQueue();
 
-        var possibleBlocks = GetBlocksQueue();
-
-        foreach(var freeSpace in freeSpaces.Take(amount))
+        foreach(var freeSpace in freeSpaces.Take(QuantityOfBlocks))
         {
             var block = Instantiate(_blockPrefab, freeSpace.Position, Quaternion.identity, transform);
             block.SetType(possibleBlocks.Dequeue()); 
@@ -144,7 +147,7 @@ public class BoardManager : MonoBehaviour
     // }
 
     ///<summary>Get Blocks from 1 to 15 randomly</summary>
-    private Queue<BlockType> GetBlocksQueue()
+    public Queue<BlockType> GetOrderedBlocksQueue()
     {
         var possibleBlocks = BlockType.PossibleValues
                              .GetValues(typeof(BlockType.PossibleValues))

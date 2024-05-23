@@ -16,7 +16,6 @@ public class GameMode : MonoBehaviour
     [SerializeField] ShiftInputs _shiftInputs;
 
     [Header("HUD")]
-    [SerializeField] GameObject _gameOverHud;
     [SerializeField] GameObject _gameWonHud;
 
     const int InitialSeed = 777;
@@ -28,7 +27,6 @@ public class GameMode : MonoBehaviour
     {
         // HUD
         CenterCamera();
-        _gameOverHud.SetActive(false);
         _gameWonHud.SetActive(false);
 
         // Shift Controllers
@@ -55,27 +53,11 @@ public class GameMode : MonoBehaviour
 
     public void ValidateEndOfGame()
     {
-        // int freeSpacesCount = _boardManager.FreeSpacesCount();
-
-        // if(freeSpacesCount >= 1)
-        // {
-        //     _boardManager.GenerateBlocks(1);
-        //     freeSpacesCount--;
-        // }
-
-        // if(freeSpacesCount <= 0)
-        // {
-        //     if(_gameOverValidator.PlayerWonGame())
-        //     {
-        //         _gameIsEnded = true;
-        //         OnGameWon();
-        //     }
-        //     else if (_gameOverValidator.PlayerLosedGame())
-        //     {   
-        //         _gameIsEnded = true;
-        //         OnGameOver();  
-        //     }
-        // }
+        if(_gameOverValidator.PlayerWonGame())
+        {
+            _gameIsEnded = true;
+            OnGameWon();
+        }
     }
 
     public void OnGameWon()
@@ -83,13 +65,6 @@ public class GameMode : MonoBehaviour
         _shiftManager.EnableShifts = false;
         _gameWonHud.SetActive(true);
         Debug.LogWarning("Game Won");
-    }
-
-    public void OnGameOver()
-    {
-        _shiftManager.EnableShifts = false;
-        _gameOverHud.SetActive(true);
-        Debug.LogWarning("Game Over");
     }
 
     public void RestartGame()
