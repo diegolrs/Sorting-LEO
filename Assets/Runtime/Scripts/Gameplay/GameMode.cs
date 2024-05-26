@@ -10,6 +10,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] BoardShuffler _boardShuffler;
     [SerializeField] GameEndValidator _gameOverValidator;
     [SerializeField] SeedController _seedController;
+    [SerializeField] Timer _timer;
 
     [Header("Shift")]
     [SerializeField] ShiftManager _shiftManager;
@@ -38,6 +39,7 @@ public class GameMode : MonoBehaviour
 
         // Allow Gameplay
         _shiftInputs.EnableInputs = true;
+        _timer.Enabled = true;
     }
 
     private void CenterCamera()
@@ -61,6 +63,8 @@ public class GameMode : MonoBehaviour
     public void OnGameWon()
     {
         _shiftManager.EnableShifts = false;
+        _timer.Enabled = false;
+        _shiftInputs.EnableInputs = false;
         _gameWonHud.SetActive(true);
         Debug.LogWarning("Game Won");
     }

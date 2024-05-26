@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 292132501}
   - component: {fileID: 292132500}
   m_Layer: 5
-  m_Name: TempImg
+  m_Name: TimerImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -189, y: 0}
+  m_AnchoredPosition: {x: -195, y: 0}
   m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &292132501
@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.99997, y: 0}
+  m_AnchoredPosition: {x: -198, y: 0}
   m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &424734921
@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 0}
+  m_AnchoredPosition: {x: 127.99994, y: 0}
   m_SizeDelta: {x: 466.4978, y: 137.5353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &876419153
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -11.593872, y: 2.6634521, z: -1.4589001, w: 1.9913255}
+  m_margin: {x: -11.593872, y: 2.6634521, z: 50.365257, w: 1.9913255}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -325,8 +325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -214.4917, y: 103.06612}
-  m_SizeDelta: {x: -214.48999, y: -206.13257}
+  m_AnchoredPosition: {x: -309.34583, y: 103.06612}
+  m_SizeDelta: {x: -309.3441, y: -206.1326}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &949466863
 CanvasRenderer:
@@ -402,7 +402,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: -2.9983, y: -9.3211}
+  m_SizeDelta: {x: -2.5342, y: -9.3211}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1117926527
 CanvasRenderer:
@@ -480,8 +480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 215.9984, y: -101.76965}
-  m_SizeDelta: {x: -214.48999, y: -206.13257}
+  m_AnchoredPosition: {x: 370.50058, y: -101.76967}
+  m_SizeDelta: {x: -368.9922, y: -206.1326}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1285241036
 CanvasRenderer:
@@ -634,8 +634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.998291, y: -0.28720093}
-  m_SizeDelta: {x: -2.9983, y: -9.3211}
+  m_AnchoredPosition: {x: -3.5563965, y: -0.28720093}
+  m_SizeDelta: {x: -3.5563, y: -9.3211}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1869727729
 CanvasRenderer:
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 1931523463}
   - component: {fileID: 1931523462}
   m_Layer: 1
-  m_Name: TempText
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 137, y: 0}
+  m_AnchoredPosition: {x: 131, y: 0}
   m_SizeDelta: {x: 466.4978, y: 137.5353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1931523463
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -11.593872, y: 2.6634521, z: -1.4589001, w: 1.9913255}
+  m_margin: {x: -9.554245, y: 2.6634521, z: 80.12586, w: 1.9913255}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1484,3 +1484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0239e6a97c715443965514098049d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameplayHud: {fileID: 0}
+  _movementsText: {fileID: 876419152}
+  _timerText: {fileID: 1931523462}

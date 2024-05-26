@@ -6,7 +6,9 @@ using TMPro;
 public class GameplayHud : MonoBehaviour
 {
     [SerializeField] MovementCounter _movementCounter;
-    [SerializeField] TextMeshProUGUI _text;
+    [SerializeField] Timer _timer;
+    [SerializeField] TextMeshProUGUI _movementsText;
+    [SerializeField] TextMeshProUGUI _timerText;
     [SerializeField] Animator _anim;
 
     const string OnMakeMovementAnim = "LED_Blink";
@@ -17,8 +19,10 @@ public class GameplayHud : MonoBehaviour
         _lastMovementQuantity = _movementCounter.GetQuantity();
     }
 
-    string MovementCountToStr(int count)
+    public string MovementCountToStr()
     {
+        int count = _movementCounter.GetQuantity();
+
         if(count == 0)
             return "-";
 
@@ -34,14 +38,38 @@ public class GameplayHud : MonoBehaviour
         return str + count;
     }
 
-    private void LateUpdate() 
+    public string TimeToSrt()
     {
-        int curMovementQuantity = _movementCounter.GetQuantity();
-        _text.text = MovementCountToStr(curMovementQuantity);
-        if(curMovementQuantity != _lastMovementQuantity)
+        var elapsedTime = _timer.GetElapsedTime();
+        int hours = Mathf.FloorToInt(elapsedTime / 3600);
+        int minutes = Mathf.FloorToInt((elapsedTime % 3600) / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+    }
+
+    void UpdateMovementText()
+    {
+        _movementsText.text = MovementCountToStr();
+    }
+
+    void UpdateTimerText()
+    {
+        _timerText.text = TimeToSrt();
+    }
+
+    void ProcessMovementAnimation()
+    {
+        if(_movementCounter.GetQuantity() != _lastMovementQuantity)
         {
             _anim?.Play(OnMakeMovementAnim);
-            _lastMovementQuantity = curMovementQuantity;
+            _lastMovementQuantity = _movementCounter.GetQuantity();
         }
+    }
+
+    private void LateUpdate() 
+    {
+        UpdateMovementText();
+        UpdateTimerText();
+        ProcessMovementAnimation();
     }
 }
