@@ -20,6 +20,8 @@ public class GameMode : MonoBehaviour
     [Header("HUD")]
     [SerializeField] GameObject _gameWonHud;
 
+    public static bool Is_SDC32_Challenge = false;
+
     private bool _gameIsEnded;
 
     private void Start() 
@@ -32,9 +34,16 @@ public class GameMode : MonoBehaviour
         _shiftManager.EnableShifts = true;
         _shiftInputs.EnableInputs = false;
 
+        // Random config
+        if(Is_SDC32_Challenge)
+        {
+            _seedController.Seed = 32;
+            Random.InitState(_seedController.Seed);
+        }
+        Debug.Log($"Seed: {_seedController.Seed}");
+
         // Board Generation
         _boardManager.GenerateBoard();
-        Random.InitState(_seedController.Seed);
         _boardShuffler.ShuffleBoard();
 
         // Allow Gameplay

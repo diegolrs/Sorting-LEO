@@ -12,6 +12,11 @@ public class GameplayHud : MonoBehaviour
     [SerializeField] TextMeshProUGUI _timerText;
     [SerializeField] Animator _anim;
 
+    [Header("Footer")]
+    [SerializeField] GameObject _regularFooter;
+    [SerializeField] GameObject _challengeFooter;
+
+    [Header("Audio")]
     [SerializeField] AudioHandler _audioHandler;
     [SerializeField] AudioClip _movementFx;
     [SerializeField] AudioClip _loadSceneFx;
@@ -32,6 +37,8 @@ public class GameplayHud : MonoBehaviour
 
     private void Start() 
     {
+        _challengeFooter.SetActive(GameMode.Is_SDC32_Challenge);
+        _regularFooter.SetActive(!GameMode.Is_SDC32_Challenge);
         _lastMovementQuantity = _movementCounter.GetQuantity();
         _audioHandler.PlaySFX(_loadSceneFx);
     }

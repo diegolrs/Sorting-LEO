@@ -24,6 +24,14 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        GameMode.Is_SDC32_Challenge = false;
+        StartCoroutine(StartGameRoutine());
+    }
+
+    // SDC 32 Challenge
+    public void StartGameChallenge()
+    {
+        GameMode.Is_SDC32_Challenge = true;
         StartCoroutine(StartGameRoutine());
     }
 
