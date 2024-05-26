@@ -28,7 +28,7 @@ AnimationClip:
     - time: 0.6666667
       value: {fileID: -862562972, guid: f87c5435a6a219240b798a6da19be9bd, type: 3}
     attribute: m_Sprite
-    path: Panel (1)/RightPanel/LED
+    path: Head/RightPanel/LED
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
@@ -39,7 +39,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4090296371
+      path: 2459770606
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114

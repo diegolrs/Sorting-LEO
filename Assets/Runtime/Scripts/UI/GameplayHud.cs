@@ -5,25 +5,42 @@ using TMPro;
 
 public class GameplayHud : MonoBehaviour
 {
+    [SerializeField] GameMode _gameMode;
     [SerializeField] MovementCounter _movementCounter;
     [SerializeField] Timer _timer;
     [SerializeField] TextMeshProUGUI _movementsText;
     [SerializeField] TextMeshProUGUI _timerText;
     [SerializeField] Animator _anim;
 
+    [SerializeField] AudioHandler _audioHandler;
+    [SerializeField] AudioClip _movementFx;
+    [SerializeField] AudioClip _loadSceneFx;
+
     const string OnMakeMovementAnim = "LED_Blink";
     int _lastMovementQuantity;
+
+    public void GoToMainMenu()
+    {
+        print("cliquei");
+        _gameMode.GoToMainMenu();
+    }
+
+    public void RestartGame()
+    {
+        _gameMode.RestartGame();
+    }
 
     private void Start() 
     {
         _lastMovementQuantity = _movementCounter.GetQuantity();
+        _audioHandler.PlaySFX(_loadSceneFx);
     }
 
     public string MovementCountToStr()
     {
         int count = _movementCounter.GetQuantity();
 
-        if(count == 0)
+        if(count <= 0)
             return "-";
 
         string str = "";
@@ -59,10 +76,11 @@ public class GameplayHud : MonoBehaviour
 
     void ProcessMovementAnimation()
     {
-        if(_movementCounter.GetQuantity() != _lastMovementQuantity)
+        if(_movementCounter.GetQuantity() != _lastMovementQuantity && _movementCounter.GetQuantity() > 0)
         {
             _anim?.Play(OnMakeMovementAnim);
             _lastMovementQuantity = _movementCounter.GetQuantity();
+            _audioHandler.PlaySFX(_movementFx);
         }
     }
 

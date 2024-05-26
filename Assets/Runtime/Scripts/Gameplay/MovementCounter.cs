@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MovementCounter : MonoBehaviour
 {
-    int _quantity;
+    int _quantity = -1; //TODO: IGNORE FIRST MOVEMENT ON SUFFLE 
 
     public void IncreaseOne()
     {

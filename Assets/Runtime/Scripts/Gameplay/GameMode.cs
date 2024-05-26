@@ -34,7 +34,7 @@ public class GameMode : MonoBehaviour
 
         // Board Generation
         _boardManager.GenerateBoard();
-        Debug.Log("Seed: " + _seedController.Seed);
+        Random.InitState(_seedController.Seed);
         _boardShuffler.ShuffleBoard();
 
         // Allow Gameplay
@@ -72,6 +72,11 @@ public class GameMode : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(SceneConstants.MenuScene);
     }
 
     public void OnEndShift()

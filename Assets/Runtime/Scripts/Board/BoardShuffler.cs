@@ -8,6 +8,7 @@ public class BoardShuffler : MonoBehaviour
     [SerializeField] GameMode _gameMode;
     [SerializeField] ShiftManager _shiftManager;
     [SerializeField] BoardManager _boardManager;
+    [SerializeField] SeedController _seedController;
     [SerializeField] int _shuffleAmount = 100;
 
     Block lastBlockMoved;

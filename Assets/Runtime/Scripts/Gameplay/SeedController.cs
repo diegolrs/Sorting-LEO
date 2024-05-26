@@ -10,6 +10,6 @@ public class SeedController : MonoBehaviour
     public int Seed
     {
         get { return _seed; }
-        set {_seed = value; Random.InitState(_seed);}
+        set {_seed = value;}
     }
 }
