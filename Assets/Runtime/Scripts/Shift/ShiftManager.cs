@@ -22,7 +22,11 @@ public class ShiftManager : MonoBehaviour
         if (_input.BlockWasClicked(out var block))
         {
             if(CanMoveBlock(block, out var shiftDirection))
+            {
                 Shift(block, shiftDirection);
+                _gameMode.OnEndShift();
+            }
+                
         }
     }
 
@@ -51,9 +55,9 @@ public class ShiftManager : MonoBehaviour
     public void Shift(Block block, Vector2 dir)
     {
         _isShifting = true;
+        var lastPosition = block.Position;
         block.LeaveCurrentSpace();
-        block.EnterSpace(_board.GetBlockSpaceAt(block.Position+dir));
-        _gameMode.OnEndShift();
+        block.EnterSpace(_board.GetBlockSpaceAt(lastPosition+dir));
         _isShifting = false;
     }
 }

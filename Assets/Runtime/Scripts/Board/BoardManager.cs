@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     [SerializeField] BlockTypeSO _blockTypeSO;
+    
 
     [Header("Board Parameters")]
     [SerializeField] int _width;
@@ -41,7 +42,7 @@ public class BoardManager : MonoBehaviour
     }
     #endregion
    
-    public void GenerateBoard(int seed)
+    public void GenerateBoard()
     {
         GenerateBoardRenderer();
         GenerateGrid();
@@ -135,18 +136,7 @@ public class BoardManager : MonoBehaviour
         }
         return null;
     }
-
-    // public bool HasBlockAtSpace(Vector2 position, out Block blockAtSpace)
-    // {
-    //     blockAtSpace = null;
-
-    //     if(GetBlockSpaceAt(position) is BlockSpace bs)
-    //         blockAtSpace = bs.GetBlock();
-
-    //     return blockAtSpace != null;
-    // }
-
-    ///<summary>Get Blocks from 1 to 15 randomly</summary>
+    
     public Queue<BlockType> GetOrderedBlocksQueue()
     {
         var possibleBlocks = BlockType.PossibleValues

@@ -13,7 +13,7 @@ public class Block : MonoBehaviour
 
     private void OnDestroy() => LeaveCurrentSpace();
 
-    public Vector2 Position => transform.localPosition;
+    public Vector2 Position => _blockSpace.transform.localPosition;
     public BlockType GetBlockType() => _type;
 
     private BlockSpace _blockSpace;

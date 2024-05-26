@@ -8,18 +8,16 @@ public class GameMode : MonoBehaviour
     [SerializeField] Camera _mainCamera;
     [SerializeField] BoardManager _boardManager;
     [SerializeField] BoardShuffler _boardShuffler;
-    [SerializeField] SeedController _seedController;
     [SerializeField] GameEndValidator _gameOverValidator;
+    [SerializeField] SeedController _seedController;
 
     [Header("Shift")]
     [SerializeField] ShiftManager _shiftManager;
     [SerializeField] ShiftInputs _shiftInputs;
+    [SerializeField] MovementCounter _movementCounter;
 
     [Header("HUD")]
     [SerializeField] GameObject _gameWonHud;
-
-    const int InitialSeed = 777;
-    const int ShuffleAmount = 777;
 
     private bool _gameIsEnded;
 
@@ -34,9 +32,9 @@ public class GameMode : MonoBehaviour
         _shiftInputs.EnableInputs = false;
 
         // Board Generation
-        _seedController.Seed = InitialSeed;
-        _boardManager.GenerateBoard(_seedController.Seed);
-        _boardShuffler.ShuffleBoard(ShuffleAmount);
+        _boardManager.GenerateBoard();
+        Debug.Log("Seed: " + _seedController.Seed);
+        _boardShuffler.ShuffleBoard();
 
         // Allow Gameplay
         _shiftInputs.EnableInputs = true;
@@ -74,6 +72,7 @@ public class GameMode : MonoBehaviour
 
     public void OnEndShift()
     {
+        _movementCounter.IncreaseOne();
         StartCoroutine(EndShiftRoutine());
     }
 
